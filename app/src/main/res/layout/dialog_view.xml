@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingLeft="7dp"
+    android:paddingRight="7dp"
+    android:paddingBottom="20dp"
+    android:paddingTop="20dp"
+    android:layoutDirection="ltr"
+    >
+    <RelativeLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <android.support.v7.widget.CardView
+            app:cardUseCompatPadding="true"
+            app:cardElevation="1dp"
+            app:cardMaxElevation="1dp"
+            app:cardCornerRadius="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+            <RelativeLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <RelativeLayout
+                    android:id="@+id/relative_layout_dialog_top"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <RelativeLayout
+                        android:layout_width="60dp"
+                        android:layout_height="60dp">
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:id="@+id/circle_image_view_dialog_image"
+                            android:padding="8dp"
+                            android:src="@drawable/profile"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp" />
+                        <android.support.v7.widget.AppCompatImageView
+                            android:id="@+id/image_view_user_iten_trusted"
+                            android:layout_marginLeft="35dp"
+                            android:layout_marginTop="35dp"
+                            app:srcCompat="@drawable/ic_trusted"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp" />
+                    </RelativeLayout>
+                    <LinearLayout
+                        android:layout_marginLeft="60dp"
+                        android:gravity="center|left"
+                        android:orientation="vertical"
+                        android:padding="7dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp">
+                        <TextView
+                            android:id="@+id/text_view_view_dialog_user"
+                            android:textSize="20dp"
+                            android:textStyle="bold"
+                            android:text="Water Wallpaper"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                        <TextView
+                            android:id="@+id/text_view_view_dialog_title"
+                            android:textColor="@color/primary_text"
+                            android:textStyle="italic"
+                            android:text="Water Wallpaper"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_below="@id/relative_layout_dialog_top"
+                android:background="@drawable/border_top"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:adjustViewBounds="true"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/bg_transparant"
+                    android:id="@+id/image_view_image_dialog_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+                <com.whygraphics.gifview.gif.GIFView xmlns:gif_view="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/gif_view_dialog_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/bg_transparant"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitXY"
+                    android:visibility="visible"
+                    android:maxHeight="600dp"
+                    />
+
+                <RelativeLayout
+                    android:id="@+id/relativeLayout_progress_dialog_gif"
+                    android:layout_centerVertical="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp">
+                    <com.heavymetal.giphy.ui.view.RotateImageView
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:background="@drawable/border_gif"
+                        />
+                    <ImageView
+                        android:tint="@color/white"
+                        android:padding="15dp"
+                        app:srcCompat='@drawable/ic_gif_white'
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+                </RelativeLayout>
+
+                </RelativeLayout>
+            </RelativeLayout>
+        </android.support.v7.widget.CardView>
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_marginTop="3dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <android.support.v7.widget.CardView
+
+            app:cardElevation="3dp"
+            app:cardCornerRadius="20dp"
+            android:layout_margin="0dp"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp">
+                <com.like.LikeButton
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentBottom="true"
+                    android:id="@+id/like_button_fav_image_dialog"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    app:circle_end_color="#ff0048"
+                    app:circle_start_color="#0f89a4"
+                    app:dots_primary_color="#ff0048"
+                    app:dots_secondary_color="#0f89a4"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    app:icon_size="30dp"
+                    app:anim_scale_factor="10"
+                    app:like_drawable="@drawable/ic_favorite"
+                    app:unlike_drawable="@drawable/ic_favorite_border" />
+                <com.like.LikeButton
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentBottom="true"
+                    android:id="@+id/like_button_whatsapp_image_dialog"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    app:circle_end_color="#5CAA4F"
+                    app:circle_start_color="#7FD371"
+                    app:dots_primary_color="#5CAA4F"
+                    app:dots_secondary_color="#7FD371"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    app:icon_size="30dp"
+                    app:anim_scale_factor="10"
+                    app:like_drawable="@drawable/ic_whatsapp"
+                    app:unlike_drawable="@drawable/ic_whatsapp" />
+                <com.like.LikeButton
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentBottom="true"
+                    android:id="@+id/like_button_messenger_image_dialog"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    app:circle_end_color="#0656F7"
+                    app:circle_start_color="#3AD5F9"
+                    app:dots_primary_color="#0656F7"
+                    app:dots_secondary_color="#3AD5F9"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    app:icon_size="30dp"
+                    app:anim_scale_factor="10"
+                    app:like_drawable="@drawable/ic_messenger"
+                    app:unlike_drawable="@drawable/ic_messenger" />
+                <com.like.LikeButton
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentBottom="true"
+                    android:id="@+id/like_button_facebook_image_dialog"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    app:circle_end_color="#064D93"
+                    app:circle_start_color="#5397EA"
+                    app:dots_primary_color="#064D93"
+                    app:dots_secondary_color="#5397EA"
+                    app:icon_size="30dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    app:anim_scale_factor="10"
+                    app:like_drawable="@drawable/ic_facebook"
+                    app:unlike_drawable="@drawable/ic_facebook" />
+                <com.like.LikeButton
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentBottom="true"
+                    android:id="@+id/like_button_hink_image_dialog"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    app:circle_end_color="#064D93"
+                    app:circle_start_color="#5397EA"
+                    app:dots_primary_color="#064D93"
+                    app:dots_secondary_color="#5397EA"
+                    app:icon_size="30dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    app:anim_scale_factor="10"
+                    app:like_drawable="@drawable/ic_hink"
+                    app:unlike_drawable="@drawable/ic_hink" />
+                <com.like.LikeButton
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentBottom="true"
+                    android:id="@+id/like_button_share_image_dialog"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    app:circle_end_color="#5CAA4F"
+                    app:circle_start_color="#7FD371"
+                    app:dots_primary_color="#5CAA4F"
+                    app:dots_secondary_color="#7FD371"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    app:icon_size="30dp"
+                    app:anim_scale_factor="10"
+                    app:like_drawable="@drawable/ic_share"
+                    app:unlike_drawable="@drawable/ic_share" />
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+    </RelativeLayout>
+
+</RelativeLayout>

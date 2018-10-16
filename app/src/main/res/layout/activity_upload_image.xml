@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
+    android:background="@color/colorPrimaryDark"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:layoutDirection="ltr"
+    android:id="@+id/relative_layout_upload"
+    >
+
+    <LinearLayout
+        android:layout_above="@+id/linear_layout_save_upload"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <RelativeLayout
+            android:id="@+id/collapsing_toolbar_layout_wallpaper"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="false"
+            >
+
+
+            <com.whygraphics.gifview.gif.GIFView
+                android:src="@drawable/bg_transparant"
+                xmlns:gif_view="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/gif_view_upload_gif"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="visible"
+                android:adjustViewBounds="true"
+                android:scaleType="fitXY"
+                android:layout_centerVertical="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                />
+            <android.support.design.widget.FloatingActionButton
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:id="@+id/fab_select_gif"
+                app:backgroundTint="#f5075b"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|end"
+                android:tint="@color/white"
+                android:layout_margin="@dimen/fab_margin"
+                app:srcCompat="@drawable/ic_file_upload" />
+
+        </RelativeLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/linear_layout_save_upload"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        >
+        <android.support.v4.widget.NestedScrollView
+            android:background="@color/colorPrimary"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            >
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/card_view_wallpaper"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    app:cardElevation="3dp"
+                    app:cardCornerRadius="0dp"
+                    app:cardBackgroundColor="@color/colorPrimary"
+                    >
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <LinearLayout
+                            android:layout_marginRight="60dp"
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <LinearLayout
+                                android:orientation="horizontal"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+                                <de.hdodenhof.circleimageview.CircleImageView
+                                    android:id="@+id/circle_image_view_upload_user"
+                                    android:padding="8dp"
+                                    android:src="@drawable/profile"
+                                    android:layout_width="60dp"
+                                    android:layout_height="60dp" />
+                                <LinearLayout
+
+                                    android:gravity="center|left"
+                                    android:orientation="vertical"
+                                    android:padding="7dp"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="60dp">
+                                    <EditText
+                                        android:backgroundTint="@color/white"
+                                        android:id="@+id/edit_text_upload_title"
+                                        android:textSize="20dp"
+                                        android:textStyle="bold"
+                                        android:textColor="@color/light_white"
+                                        android:hint="Gif title"
+                                        android:textColorHint="@color/light_white"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content" />
+                                </LinearLayout>
+                            </LinearLayout>
+
+                        </LinearLayout>
+                        <android.support.design.widget.FloatingActionButton
+                            android:layout_alignParentRight="true"
+                            android:id="@+id/fab_save_upload"
+                            app:backgroundTint="#f5075b"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+
+                            android:layout_gravity="bottom|end"
+                            android:tint="@color/white"
+                            app:srcCompat="@drawable/ic_file_upload" />
+                    </RelativeLayout>
+                </android.support.v7.widget.CardView>
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:textStyle="bold"
+                            android:layout_marginTop="10dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="18dp"
+                            android:text="Select catégories"
+                            android:paddingLeft="4dp"
+                            style="@style/InputLabel" />
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:theme="@style/TextLabel"
+                            app:errorTextAppearance="@style/error_appearance"
+                            android:layout_height="wrap_content"
+                            android:paddingBottom="10dp">
+                            <android.support.v7.widget.RecyclerView
+                                android:visibility="visible"
+                                android:id="@+id/recycle_view_selected_category"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+                            </android.support.v7.widget.RecyclerView>
+                        </android.support.design.widget.TextInputLayout>
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:layout_marginTop="10dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="18dp"
+                            android:textStyle="bold"
+                            android:text="Select Languages :"
+                            android:paddingLeft="4dp"
+                            style="@style/InputLabel" />
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:theme="@style/TextLabel"
+                            app:errorTextAppearance="@style/error_appearance"
+                            android:layout_height="wrap_content"
+                            android:paddingBottom="10dp">
+                            <android.support.v7.widget.RecyclerView
+                                android:visibility="visible"
+                                android:id="@+id/recycle_view_selected_language"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+                            </android.support.v7.widget.RecyclerView>
+                        </android.support.design.widget.TextInputLayout>
+
+                    </LinearLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+        </android.support.v4.widget.NestedScrollView>
+
+    </LinearLayout>
+
+</RelativeLayout>

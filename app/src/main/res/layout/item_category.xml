@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layoutDirection="ltr"
+    >
+    <android.support.v7.widget.CardView
+        app:cardElevation="10dp"
+        android:id="@+id/card_view_category_status"
+        app:cardBackgroundColor="@color/colorPrimary"
+        android:layout_margin="5dp"
+        app:cardCornerRadius="6dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:clickable="false"
+            android:focusable="false"
+            android:padding="7dp"
+            app:srcCompat="@drawable/ic_favorite_nav"
+            android:id="@+id/image_view_item_category"
+            android:background="@drawable/bg_raduis_img_cat"
+            android:layout_width="match_parent"
+            android:layout_height="60dp" />
+        <TextView
+            android:layout_marginTop="60dp"
+            android:id="@+id/text_view_item_category"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="7dp"
+            android:paddingBottom="7dp"
+            android:gravity="center"
+            android:text="Navigation"
+            android:textColor="@color/white"
+            android:textStyle="bold"/>
+    </RelativeLayout>
+    </android.support.v7.widget.CardView>
+</LinearLayout>

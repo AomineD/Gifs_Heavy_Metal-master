@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layoutDirection="ltr"
+    tools:context="com.heavymetal.giphy.ui.MainActivity">
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vp_horizontal_ntb"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+    <android.support.design.widget.AppBarLayout
+        app:elevation="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:theme="@style/AppTheme.AppBarOverlay">
+        <RelativeLayout
+            app:layout_scrollFlags="scroll|enterAlways"
+
+            android:layout_width="match_parent"
+            android:layout_height="65dp">
+            <com.arlib.floatingsearchview.FloatingSearchView
+
+                android:id="@+id/main_floating_search_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:floatingSearch_dimBackground="false"
+                app:floatingSearch_searchBarMarginLeft="2dp"
+                app:floatingSearch_searchBarMarginTop="5dp"
+                app:floatingSearch_searchBarMarginRight="2dp"
+                app:floatingSearch_searchHint="Search..."
+                app:floatingSearch_suggestionsListAnimDuration="250"
+                app:floatingSearch_showSearchKey="true"
+                app:floatingSearch_leftActionMode="showHamburger"
+                app:floatingSearch_showVoiceInput="true"
+                app:floatingSearch_menu="@menu/main"
+                app:floatingSearch_showMenuAction="true"
+                app:floatingSearch_showOverFlowMenu="true"
+                app:theme="@style/AppTheme.PopupOverlay"
+                app:floatingSearch_close_search_on_keyboard_dismiss="true"/>
+        </RelativeLayout>
+    </android.support.design.widget.AppBarLayout>
+
+
+    <com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx
+        android:id="@+id/bnve"
+        app:elevation="8dp"
+        android:layout_gravity="bottom"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        style="@style/bnve_white_bg"
+        app:menu="@menu/menu_navigation_center_fab" />
+
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="bottom|center"
+        app:srcCompat="@drawable/share"
+        android:layout_marginBottom="16dp"
+        android:clickable="true"
+        app:backgroundTint="@color/orange"
+        app:borderWidth="0dp"
+        app:elevation="9dp"
+     />
+</android.support.design.widget.CoordinatorLayout>
