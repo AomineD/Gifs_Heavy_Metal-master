@@ -924,13 +924,13 @@ public class MainActivity extends AppCompatActivity
                 image_view_google_nav_header.setVisibility(View.GONE);
                 image_view_facebook_nav_header.setVisibility(View.VISIBLE);
             }
-            button_logout_nav_header.setVisibility(View.VISIBLE);
+            //  button_logout_nav_header.setVisibility(View.VISIBLE);
             button_login_nav_header.setVisibility(View.GONE);
         }else{
             text_view_name_nave_header.setText(getResources().getString(R.string.please_login));
             Picasso.with(getApplicationContext()).load(R.drawable.profile).placeholder(R.drawable.profile).error(R.drawable.profile).resize(200,200).centerCrop().into(circle_image_view_profile_nav_header);
             button_logout_nav_header.setVisibility(View.GONE);
-            button_login_nav_header.setVisibility(View.VISIBLE);
+            //button_login_nav_header.setVisibility(View.VISIBLE);
             image_view_google_nav_header.setVisibility(View.VISIBLE);
             image_view_facebook_nav_header.setVisibility(View.VISIBLE);
         }
