@@ -276,48 +276,49 @@
                     android:id="@+id/ripple_view_wallpaper_comment"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    >
+                    android:layout_weight="2">
+
                     <LinearLayout
-                        android:orientation="vertical"
-                        android:background="@drawable/border_left"
-                        android:gravity="center"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        >
+                        android:background="@drawable/border_left"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
                         <RelativeLayout
                             android:id="@+id/relativeLayout_1"
-                            android:gravity="center"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                            android:layout_height="wrap_content"
+                            android:gravity="center">
 
                             <com.like.LikeButton
-                                android:layout_marginTop="6dp"
                                 android:id="@+id/like_botton_share_fragement_image"
                                 android:layout_width="match_parent"
                                 android:layout_height="50dp"
+                                android:layout_marginTop="6dp"
+                                app:anim_scale_factor="10"
                                 app:circle_end_color="#aaff00"
                                 app:circle_start_color="#0f89a4"
                                 app:dots_primary_color="#aaff00"
                                 app:dots_secondary_color="#0f89a4"
                                 app:icon_size="30dp"
-                                app:anim_scale_factor="10"
                                 app:like_drawable="@drawable/ic_share_white"
-                                app:unlike_drawable="@drawable/ic_share_white"
-                                />
+                                app:unlike_drawable="@drawable/ic_share_white" />
                         </RelativeLayout>
+
                         <TextView
-                            android:textColor="#ffff"
-                            android:text="@string/share"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:text="@string/share"
+                            android:textColor="#ffff" />
                     </LinearLayout>
                 </RelativeLayout>
                 <RelativeLayout
                     android:id="@+id/ripple_view_wallpaper_comments"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_weight="0"
+                    android:visibility="gone"
                     >
                     <LinearLayout
                         android:orientation="vertical"

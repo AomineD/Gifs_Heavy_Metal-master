@@ -36,6 +36,7 @@ import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.InterstitialAd;
 import com.heavymetal.giphy.api.apiClient;
 import com.heavymetal.giphy.api.apiRest;
+import com.heavymetal.giphy.config.Config;
 import com.heavymetal.giphy.entity.Category;
 import com.heavymetal.giphy.entity.Gif;
 import com.heavymetal.giphy.manager.FavoritesStorage;
@@ -89,6 +90,7 @@ public class GifAdapter extends RecyclerView.Adapter {
     private static final String HIKE_ID="com.bsb.hike";
 
     private InterstitialAd mInterstitialAd;
+    private int actualclick = 1;
 
     public GifAdapter(final List<Gif> gifList, List<Category> categoryList, final Activity activity, final PeekAndPop peekAndPop) {
         this.gifList = gifList;
@@ -505,7 +507,7 @@ public class GifAdapter extends RecyclerView.Adapter {
                 }else{
                     holder.relative_layout_progress_image_item.setVisibility(View.VISIBLE);
                     holder.progress_bar_item_image.setProgress(gifList.get(position).getProgress());
-                    Log.e("MAIN", "onBindViewHolder: Progress = "+gifList.get(position).getProgress());
+                   // Log.e("MAIN", "onBindViewHolder: Progress = "+gifList.get(position).getProgress());
                     holder.text_view_progress_image_item.setText("Loading : "+ gifList.get(position).getProgress()+" %");
                     if (gifList.get(position).getProgress()==100){
                         holder.image_view_cancel_image_item.setClickable(false);
@@ -527,7 +529,7 @@ public class GifAdapter extends RecyclerView.Adapter {
                     @Override
                     public void onAnimationEnd(LikeButton likeButton) {
                         holder.like_button_whatsapp_image_item.setLiked(false);
-
+                        Log.e("MAINY", "Intersticial cargado: "+mInterstitialAd.isLoaded() );
                         if (mInterstitialAd.isLoaded()) {
                             if (check()) {
                                 mInterstitialAd.show();
@@ -740,38 +742,148 @@ public class GifAdapter extends RecyclerView.Adapter {
                 holder.image_view_image_item_image.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Intent intent = new Intent(activity.getApplicationContext(), GifActivity.class);
-                        intent.putExtra("id", gifList.get(position).getId());
-                        intent.putExtra("title", gifList.get(position).getTitle());
-                        intent.putExtra("thumbnail", gifList.get(position).getThumbnail());
-                        intent.putExtra("userid", gifList.get(position).getUserid());
-                        intent.putExtra("user", gifList.get(position).getUser());
-                        intent.putExtra("userimage", gifList.get(position).getUserimage());
-                        intent.putExtra("type", gifList.get(position).getType());
-                        intent.putExtra("original", gifList.get(position).getOriginal());
-                        intent.putExtra("image", gifList.get(position).getImage());
-                        intent.putExtra("extension", gifList.get(position).getExtension());
-                        intent.putExtra("comment", gifList.get(position).getComment());
-                        intent.putExtra("trusted", gifList.get(position).getTrusted());
-                        intent.putExtra("downloads", gifList.get(position).getDownloads());
-                        intent.putExtra("tags", gifList.get(position).getTags());
-                        intent.putExtra("review", gifList.get(position).getReview());
-                        intent.putExtra("comments", gifList.get(position).getComments());
-                        intent.putExtra("created", gifList.get(position).getCreated());
+                        if(correctfrecuency()) {
+                            if (mInterstitialAd.isLoaded()) {
+                                if (check()) {
+                                    mInterstitialAd.show();
+                                    mInterstitialAd.setAdListener(new AdListener() {
+                                        @Override
+                                        public void onAdClosed() {
+                                            requestNewInterstitial();
+                                            Intent intent = new Intent(activity.getApplicationContext(), GifActivity.class);
+                                            intent.putExtra("id", gifList.get(position).getId());
+                                            intent.putExtra("title", gifList.get(position).getTitle());
+                                            intent.putExtra("thumbnail", gifList.get(position).getThumbnail());
+                                            intent.putExtra("userid", gifList.get(position).getUserid());
+                                            intent.putExtra("user", gifList.get(position).getUser());
+                                            intent.putExtra("userimage", gifList.get(position).getUserimage());
+                                            intent.putExtra("type", gifList.get(position).getType());
+                                            intent.putExtra("original", gifList.get(position).getOriginal());
+                                            intent.putExtra("image", gifList.get(position).getImage());
+                                            intent.putExtra("extension", gifList.get(position).getExtension());
+                                            intent.putExtra("comment", gifList.get(position).getComment());
+                                            intent.putExtra("trusted", gifList.get(position).getTrusted());
+                                            intent.putExtra("downloads", gifList.get(position).getDownloads());
+                                            intent.putExtra("tags", gifList.get(position).getTags());
+                                            intent.putExtra("review", gifList.get(position).getReview());
+                                            intent.putExtra("comments", gifList.get(position).getComments());
+                                            intent.putExtra("created", gifList.get(position).getCreated());
 
-                        intent.putExtra("woow", gifList.get(position).getWoow());
-                        intent.putExtra("like", gifList.get(position).getLike());
-                        intent.putExtra("love", gifList.get(position).getLove());
-                        intent.putExtra("angry", gifList.get(position).getAngry());
-                        intent.putExtra("sad", gifList.get(position).getSad());
-                        intent.putExtra("haha", gifList.get(position).getHaha());
-                        activity.startActivity(intent);
-                        activity.overridePendingTransition(R.anim.enter, R.anim.exit);
+                                            intent.putExtra("woow", gifList.get(position).getWoow());
+                                            intent.putExtra("like", gifList.get(position).getLike());
+                                            intent.putExtra("love", gifList.get(position).getLove());
+                                            intent.putExtra("angry", gifList.get(position).getAngry());
+                                            intent.putExtra("sad", gifList.get(position).getSad());
+                                            intent.putExtra("haha", gifList.get(position).getHaha());
+                                            activity.startActivity(intent);
+                                            activity.overridePendingTransition(R.anim.enter, R.anim.exit);
+                                        }
+                                    });
+                                } else {
+                                    Intent intent = new Intent(activity.getApplicationContext(), GifActivity.class);
+                                    intent.putExtra("id", gifList.get(position).getId());
+                                    intent.putExtra("title", gifList.get(position).getTitle());
+                                    intent.putExtra("thumbnail", gifList.get(position).getThumbnail());
+                                    intent.putExtra("userid", gifList.get(position).getUserid());
+                                    intent.putExtra("user", gifList.get(position).getUser());
+                                    intent.putExtra("userimage", gifList.get(position).getUserimage());
+                                    intent.putExtra("type", gifList.get(position).getType());
+                                    intent.putExtra("original", gifList.get(position).getOriginal());
+                                    intent.putExtra("image", gifList.get(position).getImage());
+                                    intent.putExtra("extension", gifList.get(position).getExtension());
+                                    intent.putExtra("comment", gifList.get(position).getComment());
+                                    intent.putExtra("trusted", gifList.get(position).getTrusted());
+                                    intent.putExtra("downloads", gifList.get(position).getDownloads());
+                                    intent.putExtra("tags", gifList.get(position).getTags());
+                                    intent.putExtra("review", gifList.get(position).getReview());
+                                    intent.putExtra("comments", gifList.get(position).getComments());
+                                    intent.putExtra("created", gifList.get(position).getCreated());
+
+                                    intent.putExtra("woow", gifList.get(position).getWoow());
+                                    intent.putExtra("like", gifList.get(position).getLike());
+                                    intent.putExtra("love", gifList.get(position).getLove());
+                                    intent.putExtra("angry", gifList.get(position).getAngry());
+                                    intent.putExtra("sad", gifList.get(position).getSad());
+                                    intent.putExtra("haha", gifList.get(position).getHaha());
+                                    activity.startActivity(intent);
+                                    activity.overridePendingTransition(R.anim.enter, R.anim.exit);
+                                }
+                            } else {
+
+                                Intent intent = new Intent(activity.getApplicationContext(), GifActivity.class);
+                                intent.putExtra("id", gifList.get(position).getId());
+                                intent.putExtra("title", gifList.get(position).getTitle());
+                                intent.putExtra("thumbnail", gifList.get(position).getThumbnail());
+                                intent.putExtra("userid", gifList.get(position).getUserid());
+                                intent.putExtra("user", gifList.get(position).getUser());
+                                intent.putExtra("userimage", gifList.get(position).getUserimage());
+                                intent.putExtra("type", gifList.get(position).getType());
+                                intent.putExtra("original", gifList.get(position).getOriginal());
+                                intent.putExtra("image", gifList.get(position).getImage());
+                                intent.putExtra("extension", gifList.get(position).getExtension());
+                                intent.putExtra("comment", gifList.get(position).getComment());
+                                intent.putExtra("trusted", gifList.get(position).getTrusted());
+                                intent.putExtra("downloads", gifList.get(position).getDownloads());
+                                intent.putExtra("tags", gifList.get(position).getTags());
+                                intent.putExtra("review", gifList.get(position).getReview());
+                                intent.putExtra("comments", gifList.get(position).getComments());
+                                intent.putExtra("created", gifList.get(position).getCreated());
+
+                                intent.putExtra("woow", gifList.get(position).getWoow());
+                                intent.putExtra("like", gifList.get(position).getLike());
+                                intent.putExtra("love", gifList.get(position).getLove());
+                                intent.putExtra("angry", gifList.get(position).getAngry());
+                                intent.putExtra("sad", gifList.get(position).getSad());
+                                intent.putExtra("haha", gifList.get(position).getHaha());
+                                activity.startActivity(intent);
+                                activity.overridePendingTransition(R.anim.enter, R.anim.exit);
+                            }
+
+                        }else{
+                            Intent intent = new Intent(activity.getApplicationContext(), GifActivity.class);
+                            intent.putExtra("id", gifList.get(position).getId());
+                            intent.putExtra("title", gifList.get(position).getTitle());
+                            intent.putExtra("thumbnail", gifList.get(position).getThumbnail());
+                            intent.putExtra("userid", gifList.get(position).getUserid());
+                            intent.putExtra("user", gifList.get(position).getUser());
+                            intent.putExtra("userimage", gifList.get(position).getUserimage());
+                            intent.putExtra("type", gifList.get(position).getType());
+                            intent.putExtra("original", gifList.get(position).getOriginal());
+                            intent.putExtra("image", gifList.get(position).getImage());
+                            intent.putExtra("extension", gifList.get(position).getExtension());
+                            intent.putExtra("comment", gifList.get(position).getComment());
+                            intent.putExtra("trusted", gifList.get(position).getTrusted());
+                            intent.putExtra("downloads", gifList.get(position).getDownloads());
+                            intent.putExtra("tags", gifList.get(position).getTags());
+                            intent.putExtra("review", gifList.get(position).getReview());
+                            intent.putExtra("comments", gifList.get(position).getComments());
+                            intent.putExtra("created", gifList.get(position).getCreated());
+
+                            intent.putExtra("woow", gifList.get(position).getWoow());
+                            intent.putExtra("like", gifList.get(position).getLike());
+                            intent.putExtra("love", gifList.get(position).getLove());
+                            intent.putExtra("angry", gifList.get(position).getAngry());
+                            intent.putExtra("sad", gifList.get(position).getSad());
+                            intent.putExtra("haha", gifList.get(position).getHaha());
+                            activity.startActivity(intent);
+                            activity.overridePendingTransition(R.anim.enter, R.anim.exit);
+                        }
+
                     }
+
                 });
                 holder.relative_layout_item_imge.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
+                        if(mInterstitialAd.isLoaded()){
+                            Log.e("MAINY", "onClick: AD LOADED BEBE");
+                            mInterstitialAd.show();
+                        }else{
+                            Log.e("MAINY", "onClick: AD NO LOADED BEBE");
+                        }
+
+
+                        Log.e("MAINY", "onClick: CLICK = "+position);
                         Intent intent = new Intent(activity.getApplicationContext(), GifActivity.class);
                         intent.putExtra("id", gifList.get(position).getId());
                         intent.putExtra("title", gifList.get(position).getTitle());
@@ -900,6 +1012,19 @@ public class GifAdapter extends RecyclerView.Adapter {
             case 3:{
                 break;
             }
+        }
+    }
+
+    private boolean correctfrecuency() {
+
+        if(actualclick >= Config.FRECUENCY_INTERSTITIAL){
+            actualclick = 0;
+            return true;
+        }else{
+        actualclick++;
+
+        return false;
+
         }
     }
 
@@ -1334,7 +1459,10 @@ public class GifAdapter extends RecyclerView.Adapter {
     }
     public boolean check(){
         PrefManager prf = new PrefManager(activity.getApplicationContext());
+
+
         if (!prf.getString("SUBSCRIBED").equals("FALSE")) {
+            Log.e("MAIN", "check: esta falso papu");
             return false;
         }
         Calendar c = Calendar.getInstance();
@@ -1358,13 +1486,16 @@ public class GifAdapter extends RecyclerView.Adapter {
 
                 if (seconds > Integer.parseInt(activity.getResources().getString(R.string.AD_MOB_TIME))) {
                     prf.setString("LAST_DATE_ADS", strDate);
+                    Log.e("MAINY", "check into: "+seconds );
                     return  true;
                 }
             } catch (ParseException e) {
                 e.printStackTrace();
             }
         }
-        return  false;
+
+        Log.e("MAINY", "CHECK: "+strDate);
+        return  true;
     }
     public  class FacebookNativeHolder extends  RecyclerView.ViewHolder {
         private final String TAG = "WALLPAPERADAPTER";

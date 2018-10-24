@@ -6,6 +6,9 @@ package com.heavymetal.giphy.config;
 
 
 public class Config {
+
+    public static final int FRECUENCY_INTERSTITIAL = 3;
+
     public static final String BASE_URL     =   "http://memeplus.besosdeamor.info/api/";
     public static final String TOKEN_APP    =   "8cve98hty47h2uf0dfg4re7fg0wdhn24ffr3er3reg67yu20";
 

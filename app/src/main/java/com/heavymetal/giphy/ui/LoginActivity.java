@@ -118,7 +118,9 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         super.onActivityResult(requestCode, resultCode, data);
        // callbackManager.onActivityResult(requestCode, resultCode, data);
         if (requestCode == RC_SIGN_IN) {
+            Log.e("MAINY", "onActivityResult: REQUEST CODE "+requestCode);
             GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
+            Log.e("MAINY", "onActivityResult: Result no es null = "+(result!=null));
             getResultGoogle(result);
         }
     }
@@ -176,7 +178,10 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
 
     }
     private void getResultGoogle(GoogleSignInResult result) {
-        Log.d(TAG, "handleSignInResult:" + result.isSuccess());
+        Log.d("MAINY", "handleSignInResult:" + result.isSuccess());
+        Log.e("MAINY", "getResultGoogle: Code = "+result.getStatus().getStatusCode());
+        Log.e("MAINY", "getResultGoogle: Interrumpido = "+result.getStatus().isInterrupted());
+        Log.e("MAINY", "getResultGoogle: Cancelado = "+result.getStatus().isCanceled());
         if (result.isSuccess()) {
 
             GoogleSignInAccount acct = result.getSignInAccount();
@@ -206,6 +211,8 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
     }
 
     public void signUp(String username,String password,String name,String type,String image){
+        Log.e("MAIN", "signUp: SIGN UP");
+
         register_progress= ProgressDialog.show(this, null,getResources().getString(R.string.operation_progress), true);
         Retrofit retrofit = apiClient.getClient();
         apiRest service = retrofit.create(apiRest.class);

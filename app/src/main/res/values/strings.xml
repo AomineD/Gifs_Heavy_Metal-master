@@ -10,6 +10,7 @@
     <string name="AD_MOB_TIME">15</string>
     <!-- Admob Published For GDPR -->
     <string name="publisher_id">pub-8574684333182442</string>
+    <string name="app_id_admob">ca-app-pub-3940256099942544~3347511713</string>
     <string name="ad_unit_id_interstitial">ca-app-pub-8574684333182442/8807599243</string>
     <string name="ad_unit_id_banner">ca-app-pub-8574684333182442/1269086237</string>
 
@@ -75,7 +76,7 @@
     <string name="no_connexion">Connection problem</string>
     <string name="retry">Retry</string>
     <string name="upload_gif">Upload GIF</string>
-    <string name="please_login">Please sign in !</string>
+    <string name="please_login">Welcome to our app!</string>
     <string name="welcome_login">Welcome to Status</string>
     <string name="welcome_login_text">Login to Start to Comment ....</string>
     <string name="operation_progress">Operation in progress</string>
